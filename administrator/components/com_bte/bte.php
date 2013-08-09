@@ -14,6 +14,6 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_banners')) {
 }
 
 // Execute the task.
-$controller	= JControllerLegacy::getInstance('Banners');
+$controller	= JControllerLegacy::getInstance('Bte');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();
