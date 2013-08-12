@@ -21,11 +21,11 @@ class JConfig {
 	public $secret = '7meghcgexq4Z6bXp';
 	public $gzip = '0';
 	public $error_reporting = 'default';
-	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '127.0.0.1';
 	public $ftp_port = '21';
-	public $ftp_user = '';
-	public $ftp_pass = '';
+	public $ftp_user = 'admin';
+	public $ftp_pass = 'admin';
 	public $ftp_root = '';
 	public $ftp_enable = '0';
 	public $offset = 'UTC';
@@ -55,6 +55,12 @@ class JConfig {
 	public $feed_limit = '10';
 	public $log_path = 'E:\\www\\muinx\\vt-bte/logs';
 	public $tmp_path = 'E:\\www\\muinx\\vt-bte/tmp';
-	public $lifetime = '15';
+	public $lifetime = '9999';
 	public $session_handler = 'database';
+	public $MetaRights = '';
+	public $sitename_pagetitles = '0';
+	public $force_ssl = '0';
+	public $feed_email = 'author';
+	public $cookie_domain = '';
+	public $cookie_path = '';
 }

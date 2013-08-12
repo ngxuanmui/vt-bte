@@ -173,6 +173,10 @@ $records = count($r);
 /* Did you mean? ... similar words area */
 
 $j = 0;
+
+if (!is_array($s))
+	$s = array();
+
 foreach ($s as $qWord=>$qSuggest) {
    if ($j == 0) {
       echo '<p class="s_text">Did you mean: ';

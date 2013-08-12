@@ -1,6 +1,6 @@
 </div>
 <?php
-if ((include $footer_file) !== false) {
-   echo $footer_html;
-}
+// if ((include $footer_file) !== false) {
+//    echo $footer_html;
+// }
 ?>

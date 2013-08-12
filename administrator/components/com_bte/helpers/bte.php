@@ -26,14 +26,14 @@ class BteHelper
 	public static function addSubmenu($vName)
 	{
 		JSubMenuHelper::addEntry(
-			JText::_('COM_BTE_SUBMENU_BANNERS'),
+			JText::_('Links'),
 			'index.php?option=com_bte&view=links',
 			$vName == 'links'
 		);
 
 		JSubMenuHelper::addEntry(
-			JText::_('COM_BTE_SUBMENU_CRAWLER'),
-			'index.php?option=com_bte&view=clients',
+			JText::_('Crawler'),
+			'index.php?option=com_bte&view=crawler',
 			$vName == 'clients'
 		);
 	}
