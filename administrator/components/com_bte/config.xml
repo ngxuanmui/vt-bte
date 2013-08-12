@@ -68,7 +68,7 @@
 			class="inputbox"
 			filter="rules"
 			validate="rules"
-			component="com_banners"
+			component="com_bte"
 			section="component" />
 	</fieldset>
 </config>

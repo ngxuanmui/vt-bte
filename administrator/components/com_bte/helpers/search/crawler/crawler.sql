@@ -19,7 +19,7 @@ CREATE TABLE phpcrawler_links (
   KEY idx_content_md5(content_md5),
   FULLTEXT ft_content(content),
   KEY idx_last_crawled(last_crawled)
-);
+)  ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS words;
 CREATE TABLE words (

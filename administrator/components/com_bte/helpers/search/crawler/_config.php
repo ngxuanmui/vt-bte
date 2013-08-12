@@ -33,25 +33,25 @@ if (empty($GLOBALS["www_has_crawl_config"])) {
 $GLOBALS["www_has_crawl_config"] = 1;
 
 /* HTML headers and footers */
-$head_file = 'tpl/elt/head.php'; // file with HTML between <head> and </head> tags
+$head_file = '';  // 'tpl/elt/head.php'; // file with HTML between <head> and </head> tags
 $head_html = ''; // or just define HTML here e.g. $head_html = '<link rel="stylesheet" type="text/css" href="x.css" />';
-$header_file = 'tpl/top/table.php'; // file with HTML right after <body> tag
+$header_file = ''; // 'tpl/top/table.php'; // file with HTML right after <body> tag
 $header_html = ''; // or just define HTML here e.g. $header_html = '<h1>Search</h1><hr />';
-$footer_file = 'tpl/bot/html.php'; // file with HTML right before </body> tag
+$footer_file = ''; // 'tpl/bot/html.php'; // file with HTML right before </body> tag
 $footer_html = ''; // or just define HTML here e.g. $footer_html = '<hr /><p>Copyright Blah</p>';
 
 // *** MySQL database config. Please change these lines according your host
 $s_op['mysql_host'] = "localhost";
-$s_op['mysql_db'] = "phpcrawl";
-$s_op['mysql_user'] = "phpcrawl";
-$s_op['mysql_pass'] = "QeSxZw58";
+$s_op['mysql_db'] = "vt_bte";
+$s_op['mysql_user'] = "root";
+$s_op['mysql_pass'] = "1234";
 
-$CRAWL_ENTRY_POINT_URL = "http://".$_SERVER['HTTP_HOST']; // website to crawl MUST begins with http:// prefix
+$CRAWL_ENTRY_POINT_URL = "http://".$_SERVER['HTTP_HOST'].'/hanhphuc.vn/'; // website to crawl MUST begins with http:// prefix
 
 $CRAWL_LOCALE = "en_US"; // read more about Locate http://php.rinet.ru/manual/en/function.setlocale.php
 //$CRAWL_LOCALE = "ru_RU";
 
-$CRAWL_MAX_DEPTH = 3;   // PHP Crawler uses recursive retrieving. Specify recursion maximum depth level.
+$CRAWL_MAX_DEPTH = 5;   // PHP Crawler uses recursive retrieving. Specify recursion maximum depth level.
 $CRAWL_PAGE_EXPIRE_DAYS = 10; // Page reindex period
 
 // **** MISC SETTINGS ****

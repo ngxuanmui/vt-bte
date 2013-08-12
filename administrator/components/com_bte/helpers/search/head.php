@@ -68,18 +68,18 @@ $base_dir = dirname($_SERVER['PHP_SELF']);
 $shortitle = 'search';
 $pagetitle = 'Search';
 $titleflag = false;
-if ((include $head_file) !== false) {
-   echo $head_html;
-}
+// if ((include $head_file) !== false) {
+//    echo $head_html;
+// }
 ?>
 </head>
 
 <body>
 
 <?php
-if ((include $header_file) !== false) {
-   echo $header_html;
-}
+// if ((include $header_file) !== false) {
+//    echo $header_html;
+// }
 ?>
 
 <div id="content">
