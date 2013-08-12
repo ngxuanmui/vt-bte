@@ -63,7 +63,7 @@ class BteModelLinks extends JModelList
 			$query	= $db->getQuery(true);
 			$query->select('MAX(ordering) as '.$db->quoteName('max').', catid');
 			$query->select('catid');
-			$query->from('#__banners');
+			$query->from('#__bte_links');
 			$query->group('catid');
 			$db->setQuery($query);
 			$this->cache['categoryorders'] = $db->loadAssocList('catid', 0);
@@ -87,33 +87,18 @@ class BteModelLinks extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id AS id, a.name AS name, a.alias AS alias,'.
+				'a.id AS id, a.title AS title, a.alias AS alias, a.url AS url,'.
 				'a.checked_out AS checked_out,'.
 				'a.checked_out_time AS checked_out_time, a.catid AS catid,' .
-				'a.clicks AS clicks, a.metakey AS metakey, a.sticky AS sticky,'.
-				'a.impmade AS impmade, a.imptotal AS imptotal,' .
 				'a.state AS state, a.ordering AS ordering,'.
-				'a.purchase_type as purchase_type,'.
-				'a.language, a.publish_up, a.publish_down'
+				'a.publish_up, a.publish_down'
 			)
 		);
-		$query->from($db->quoteName('#__banners').' AS a');
-
-		// Join over the language
-		$query->select('l.title AS language_title');
-		$query->join('LEFT', $db->quoteName('#__languages').' AS l ON l.lang_code = a.language');
+		$query->from($db->quoteName('#__bte_links').' AS a');
 
 		// Join over the users for the checked out user.
 		$query->select('uc.name AS editor');
 		$query->join('LEFT', '#__users AS uc ON uc.id=a.checked_out');
-
-		// Join over the categories.
-		$query->select('c.title AS category_title');
-		$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
-
-		// Join over the clients.
-		$query->select('cl.name AS client_name,cl.purchase_type as client_purchase_type');
-		$query->join('LEFT', '#__banner_clients AS cl ON cl.id = a.cid');
 
 		// Filter by published state
 		$published = $this->getState('filter.state');
@@ -121,18 +106,6 @@ class BteModelLinks extends JModelList
 			$query->where('a.state = '.(int) $published);
 		} elseif ($published === '') {
 			$query->where('(a.state IN (0, 1))');
-		}
-
-		// Filter by category.
-		$categoryId = $this->getState('filter.category_id');
-		if (is_numeric($categoryId)) {
-			$query->where('a.catid = '.(int) $categoryId);
-		}
-
-		// Filter by client.
-		$clientId = $this->getState('filter.client_id');
-		if (is_numeric($clientId)) {
-			$query->where('a.cid = '.(int) $clientId);
 		}
 
 		// Filter by search in title
@@ -144,11 +117,6 @@ class BteModelLinks extends JModelList
 				$search = $db->Quote('%'.$db->escape($search, true).'%');
 				$query->where('(a.name LIKE '.$search.' OR a.alias LIKE '.$search.')');
 			}
-		}
-
-		// Filter on the language.
-		if ($language = $this->getState('filter.language')) {
-			$query->where('a.language = ' . $db->quote($language));
 		}
 
 		// Add the list ordering clause.
@@ -221,20 +189,11 @@ class BteModelLinks extends JModelList
 		$state = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '', 'string');
 		$this->setState('filter.state', $state);
 
-		$categoryId = $this->getUserStateFromRequest($this->context.'.filter.category_id', 'filter_category_id', '');
-		$this->setState('filter.category_id', $categoryId);
-
-		$clientId = $this->getUserStateFromRequest($this->context.'.filter.client_id', 'filter_client_id', '');
-		$this->setState('filter.client_id', $clientId);
-
-		$language = $this->getUserStateFromRequest($this->context.'.filter.language', 'filter_language', '');
-		$this->setState('filter.language', $language);
-
 		// Load the parameters.
 		$params = JComponentHelper::getParams('com_bte');
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('a.name', 'asc');
+		parent::populateState('a.title', 'asc');
 	}
 }
