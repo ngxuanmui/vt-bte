@@ -7,7 +7,7 @@
 defined('_JEXEC') or die;
 
 /**
- * Banners component helper.
+ * Bte component helper.
  *
  * @package		Joomla.Administrator
  * @subpackage	com_bte
@@ -51,13 +51,8 @@ class BteHelper
 		$user	= JFactory::getUser();
 		$result	= new JObject;
 
-		if (empty($categoryId)) {
-			$assetName = 'com_bte';
-			$level = 'component';
-		} else {
-			$assetName = 'com_bte.category.'.(int) $categoryId;
-			$level = 'category';
-		}
+		$assetName = 'com_bte';
+		$level = 'component';
 
 		$actions = JAccess::getActions('com_bte', $level);
 

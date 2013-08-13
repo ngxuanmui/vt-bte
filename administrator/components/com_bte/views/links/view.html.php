@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 /**
- * View class for a list of banners.
+ * View class for a list of links.
  *
  * @package     Joomla.Administrator
  * @subpackage  com_bte
@@ -66,17 +66,17 @@ class BteViewLinks extends JViewLegacy
 	{
 		require_once JPATH_COMPONENT . '/helpers/bte.php';
 
-		$canDo = BteHelper::getActions($this->state->get('filter.category_id'));
+		$canDo = BteHelper::getActions();
 		$user = JFactory::getUser();
-		JToolBarHelper::title(JText::_('COM_BANNERS_MANAGER_BANNERS'), 'banners.png');
+		JToolBarHelper::title(JText::_('Body Text Extractor: Links manager'), 'links.png');
 		if (count($user->getAuthorisedCategories('com_bte', 'core.create')) > 0)
 		{
-			JToolBarHelper::addNew('banner.add');
+			JToolBarHelper::addNew('link.add');
 		}
 
 		if (($canDo->get('core.edit')))
 		{
-			JToolBarHelper::editList('banner.edit');
+			JToolBarHelper::editList('link.edit');
 		}
 
 		if ($canDo->get('core.edit.state'))
@@ -84,8 +84,8 @@ class BteViewLinks extends JViewLegacy
 			if ($this->state->get('filter.state') != 2)
 			{
 				JToolBarHelper::divider();
-				JToolBarHelper::publish('banners.publish', 'JTOOLBAR_PUBLISH', true);
-				JToolBarHelper::unpublish('banners.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+				JToolBarHelper::publish('links.publish', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::unpublish('links.unpublish', 'JTOOLBAR_UNPUBLISH', true);
 			}
 
 			if ($this->state->get('filter.state') != -1)
@@ -93,36 +93,34 @@ class BteViewLinks extends JViewLegacy
 				JToolBarHelper::divider();
 				if ($this->state->get('filter.state') != 2)
 				{
-					JToolBarHelper::archiveList('banners.archive');
+					JToolBarHelper::archiveList('links.archive');
 				}
 				elseif ($this->state->get('filter.state') == 2)
 				{
-					JToolBarHelper::unarchiveList('banners.publish');
+					JToolBarHelper::unarchiveList('links.publish');
 				}
 			}
 		}
 
 		if ($canDo->get('core.edit.state'))
 		{
-			JToolBarHelper::checkin('banners.checkin');
+			JToolBarHelper::checkin('links.checkin');
 		}
 
 		if ($this->state->get('filter.state') == -2 && $canDo->get('core.delete'))
 		{
-			JToolBarHelper::deleteList('', 'banners.delete', 'JTOOLBAR_EMPTY_TRASH');
+			JToolBarHelper::deleteList('', 'links.delete', 'JTOOLBAR_EMPTY_TRASH');
 			JToolBarHelper::divider();
 		}
 		elseif ($canDo->get('core.edit.state'))
 		{
-			JToolBarHelper::trash('banners.trash');
+			JToolBarHelper::trash('links.trash');
 			JToolBarHelper::divider();
 		}
 
 		if ($canDo->get('core.admin'))
 		{
 			JToolBarHelper::preferences('com_bte');
-			JToolBarHelper::divider();
 		}
-		JToolBarHelper::help('JHELP_COMPONENTS_BANNERS_BANNERS');
 	}
 }
