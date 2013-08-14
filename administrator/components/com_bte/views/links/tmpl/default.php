@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.multiselect');
+JHtml::_('behavior.modal');
 
 $user		= JFactory::getUser();
 $userId		= $user->get('id');
@@ -98,7 +99,9 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				</td>
 				<td class="center">
 					<?php if ($item->state == 1): ?>
-						<a href="#">View</a>
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&tmpl=component&id=' . $item->id); ?>" class="modal">
+							View
+						</a>
 					<?php else: ?>
 						---
 					<?php endif; ?>
