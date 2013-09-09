@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="details"
+		addfieldpath="/administrator/components/com_banners/models/fields"
+	>
+		<field name="id" type="text" default="0"
+			readonly="true" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" 	description ="JGLOBAL_FIELD_ID_DESC" />
+
+		<field name="url" type="textarea" class="inputbox"
+			rows="10" label="Url" required="true" />
+
+	</fieldset>
+
+	<fieldset name="publish"
+		label="Publishing"
+	>
+
+		<field name="created" type="calendar"
+			label="Created"
+			class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S"
+			filter="user_utc" />
+
+
+	</fieldset>
+
+	<fieldset name="metadata"
+		label="JGLOBAL_FIELDSET_METADATA_OPTIONS"
+	>
+
+		<field name="metakey" type="textarea" class="inputbox"
+			rows="3" cols="30" label="JFIELD_META_KEYWORDS_LABEL"
+			description="COM_BANNERS_FIELD_METAKEYWORDS_DESC" />
+
+		<field name="own_prefix" type="radio"
+			label="COM_BANNERS_FIELD_BANNEROWNPREFIX_LABEL"
+			description="COM_BANNERS_FIELD_BANNEROWNPREFIX_DESC"
+			default="0" class="inputbox"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field name="metakey_prefix" type="text"
+			label="COM_BANNERS_FIELD_METAKEYWORDPREFIX_LABEL"
+			description="COM_BANNERS_FIELD_METAKEYWORDPREFIX_DESC" />
+
+	</fieldset>
+
+	<fields name="params">
+		<fieldset name="image">
+			<field name="imageurl" type="media" directory="banners"
+				hide_none="1" label="COM_BANNERS_FIELD_IMAGE_LABEL"
+				size="40"
+				description="COM_BANNERS_FIELD_IMAGE_DESC" />
+			<field name="width" type="text"
+				class="inputbox validate-numeric" label="COM_BANNERS_FIELD_WIDTH_LABEL"
+				description="COM_BANNERS_FIELD_WIDTH_DESC" />
+
+			<field name="height" type="text"
+				class="inputbox validate-numeric" label="COM_BANNERS_FIELD_HEIGHT_LABEL"
+				description="COM_BANNERS_FIELD_HEIGHT_DESC" />
+			<field name="alt" type="text" class="inputbox"
+				label="COM_BANNERS_FIELD_ALT_LABEL" description="COM_BANNERS_FIELD_ALT_DESC" />
+		</fieldset>
+	</fields>
+
+	<fieldset name="custom">
+		<field name="bannercode" type="textarea" class="inputbox"
+			rows="3" cols="30" filter="raw"
+			label="COM_BANNERS_FIELD_CUSTOMCODE_LABEL" description="COM_BANNERS_FIELD_CUSTOMCODE_DESC" />
+	</fieldset>
+
+</form>

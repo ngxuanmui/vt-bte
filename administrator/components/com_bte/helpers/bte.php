@@ -34,7 +34,7 @@ class BteHelper
 		JSubMenuHelper::addEntry(
 			JText::_('Crawler'),
 			'index.php?option=com_bte&view=crawler',
-			$vName == 'clients'
+			$vName == 'crawler'
 		);
 	}
 
