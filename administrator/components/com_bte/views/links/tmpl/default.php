@@ -50,6 +50,9 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<th>
 					<?php echo JHtml::_('grid.sort',  'Title', 'a.title', $listDirn, $listOrder); ?>
 				</th>
+				<th>
+					<?php echo JHtml::_('grid.sort',  'Website', 'a.website', $listDirn, $listOrder); ?>
+				</th>
 				<th width="5%">
 					<?php echo JHtml::_('grid.sort', 'Processed', 'a.state', $listDirn, $listOrder); ?>
 				</th>
@@ -82,20 +85,13 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 					<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 				</td>
 				<td>
-					<?php if ($item->checked_out) : ?>
-						<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'links.', $canCheckin); ?>
-					<?php endif; ?>
-					<?php if ($canEdit) : ?>
-						<a href="<?php echo JRoute::_('index.php?option=com_bte&task=link.edit&id='.(int) $item->id); ?>">
-							<?php echo $this->escape($item->title); ?></a>
-					<?php else : ?>
-							<?php echo $this->escape($item->title); ?>
-					<?php endif; ?>
-					<p class="smallsub">
-						<?php echo $this->escape($item->url);?></p>
+					<?php echo $this->escape($item->url);?>
+				</td>
+				<td>
+					<strong><?php echo $this->escape($item->website);?></strong>
 				</td>
 				<td class="center">
-					<?php echo JHtml::_('jgrid.published', $item->state, $i, 'links.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
+					<?php echo JHtml::_('jgrid.published', $item->state, $i, 'links.', false, 'cb', $item->publish_up, $item->publish_down); ?>
 				</td>
 				<td class="center">
 					<?php if ($item->state == 1): ?>

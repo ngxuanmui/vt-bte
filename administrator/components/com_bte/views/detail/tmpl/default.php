@@ -5,5 +5,12 @@ $item = $this->item;
 ?>
 
 <div id="content">
-	<?php echo $item->content; ?>
+	<?php 
+	$field = JRequest::getString('field', 'content');
+	
+	if ($field == 'html_content')
+		echo htmlspecialchars($item->html_content);
+	else
+		echo $item->content; 
+	?>
 </div>

@@ -13,6 +13,9 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_bte')) {
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+// include helper
+require_once JPATH_COMPONENT_ADMINISTRATOR . DS . 'helpers' . DS . 'bte_helper.php';
+
 // Execute the task.
 $controller	= JControllerLegacy::getInstance('Bte');
 $controller->execute(JRequest::getCmd('task'));

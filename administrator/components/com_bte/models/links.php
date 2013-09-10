@@ -30,8 +30,8 @@ class BteModelLinks extends JModelList
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'cid', 'a.cid', 'client_name',
-				'name', 'a.name',
-				'alias', 'a.alias',
+				'website', 'a.website',
+				'title', 'a.title',
 				'state', 'a.state',
 				'ordering', 'a.ordering',
 				'language', 'a.language',
@@ -87,7 +87,7 @@ class BteModelLinks extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id AS id, a.title AS title, a.alias AS alias, a.url AS url,'.
+				'a.id AS id, a.title AS title, a.website AS website, a.url AS url,'.
 				'a.checked_out AS checked_out,'.
 				'a.checked_out_time AS checked_out_time, a.catid AS catid,' .
 				'a.state AS state, a.ordering AS ordering,'.

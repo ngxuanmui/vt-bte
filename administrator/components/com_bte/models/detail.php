@@ -12,12 +12,12 @@ class BteModelDetail extends JModelLegacy
 		
 		$id = $jInput->getInt('id', 0);
 		
-		$query->select('*')->from('#__bte_links')->where('id = ' . $id)->where('state = 1');
+		$query->select('*')->from('#__bte_links')->where('id = ' . $id);
 		
 		$db->setQuery($query);
 		
 		$item = $db->loadObject();
-		
+				
 		return $item;
 	}
 }

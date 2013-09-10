@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.modal');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
@@ -31,14 +32,31 @@ JHtml::_('behavior.formvalidation');
 				<?php echo $this->form->getInput('url'); ?></li>
 				
 				<?php if ($this->item->id): ?>
+				<li><label>Website</label>
+					<span style="float: left; line-height: 23px;">
+						<?php echo $this->item->website; ?>
+					</span>
+				</li>
 				<li><label>Content before extract</label>
-					<span style="float: left; line-height: 23px;"><a href="">View</a></span>
+					<span style="float: left; line-height: 23px;">
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&field=html_content&tmpl=component&id=' . $this->item->id); ?>" class="modal">
+							View
+						</a>
+					</span>
 				</li>
 				<li><label>Content after extract</label>
-					<span style="float: left; line-height: 23px;"><a href="">View</a></span>
+					<span style="float: left; line-height: 23px;">
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&tmpl=component&id=' . $this->item->id); ?>" class="modal">
+							View
+						</a>
+					</span>
 				</li>
 				<li><label>Time process</label>
-					<span style="float: left; line-height: 23px;">99 (s)</span>
+					<span style="float: left; line-height: 23px;">
+						<?php 
+						echo round (($this->item->end_time - $this->item->start_time) / 60, 2);
+						?>
+					</span>
 				</li>
 				<?php endif; ?>
 			</ul>

@@ -8,7 +8,7 @@
 			label="JGLOBAL_FIELD_ID_LABEL" 	description ="JGLOBAL_FIELD_ID_DESC" />
 
 		<field name="url" type="textarea" class="inputbox"
-			rows="10" label="Url" required="true" />
+			rows="5" label="Url" required="true" />
 
 	</fieldset>
 

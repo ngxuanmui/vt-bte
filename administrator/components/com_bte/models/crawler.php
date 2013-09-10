@@ -178,12 +178,55 @@ class BteModelCrawler extends JModelAdmin
 		return $data;
 	}
 	
+	private function checkData($data)
+	{
+		$url = $data['url'];
+		
+		if (!$this->isValidURL($url)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private function isValidURL($url)
+	{
+		return preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*
+        (:[0-9]+)?(/.*)?$|i', $url);
+	}
+	
+	private function getDomain($url)
+	{
+		$pieces = parse_url($url);
+		$domain = isset($pieces['host']) ? $pieces['host'] : '';
+		if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,6})$/i', $domain, $regs)) {
+			return $regs['domain'];
+		}
+		return false;
+	}
+	
 	public function save($data)
 	{
+		$data['start_time'] = time();
+		
+		// extractor 
+		$o_Extractor = new BodyTextExtractor();
+		
+		$url = $data['url'];
+		
+		$data['html_content'] = file_get_contents($url);
+		$data['content'] = $o_Extractor->extractFromUrl($url);
+		$data['website'] = $this->getDomain($url);
+		
+		$data['state'] = 1;
+		
+		$data['end_time'] = time();
+		
 		$save = parent::save($data);
 		
 		if ($save)
 		{
+			
 			return true;
 		}
 	}
