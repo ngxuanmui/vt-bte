@@ -32,7 +32,7 @@ class BteHelper
 		);
 
 		JSubMenuHelper::addEntry(
-			JText::_('Crawler'),
+			JText::_('URL Extraction'),
 			'index.php?option=com_bte&view=crawler',
 			$vName == 'crawler'
 		);

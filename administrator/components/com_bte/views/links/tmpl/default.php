@@ -56,8 +56,14 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<th width="5%">
 					<?php echo JHtml::_('grid.sort', 'Processed', 'a.state', $listDirn, $listOrder); ?>
 				</th>
+				<th width="5%" nowrap="nowrap">
+					<?php echo 'HTML Content'; ?>
+				</th>
 				<th width="5%">
 					<?php echo 'Content'; ?>
+				</th>
+				<th width="5%" nowrap="nowrap">
+					<?php echo 'Time process'; ?>
 				</th>
 				<th width="1%" class="nowrap">
 					<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -93,14 +99,30 @@ $params		= (isset($this->state->params)) ? $this->state->params : new JObject();
 				<td class="center">
 					<?php echo JHtml::_('jgrid.published', $item->state, $i, 'links.', false, 'cb', $item->publish_up, $item->publish_down); ?>
 				</td>
-				<td class="center">
+				<td class="center" nowrap="nowrap">
 					<?php if ($item->state == 1): ?>
-						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&tmpl=component&id=' . $item->id); ?>" class="modal">
-							View
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&field=html_content&view=detail&id=' . $item->id); ?>">
+							HTML Content
 						</a>
 					<?php else: ?>
 						---
 					<?php endif; ?>
+				</td>
+				<td class="center">
+					<?php if ($item->state == 1): ?>
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&id=' . $item->id); ?>">
+							Content
+						</a>
+					<?php else: ?>
+						---
+					<?php endif; ?>
+				</td>
+				<td class="center">
+					<?php
+					$time = ($item->end_time - $item->start_time) / 60;
+					
+					echo round ($time, 2);
+					?>						
 				</td>
 				<td class="center">
 					<?php echo $item->id; ?>

@@ -69,6 +69,12 @@ class BteViewLinks extends JViewLegacy
 		$canDo = BteHelper::getActions();
 		$user = JFactory::getUser();
 		JToolBarHelper::title(JText::_('Body Text Extractor: Links manager'), 'links.png');
+		
+		JToolBarHelper::trash('links.trash');
+		JToolBarHelper::divider();
+		JToolBarHelper::preferences('com_bte');
+		
+		/*
 		if (count($user->getAuthorisedCategories('com_bte', 'core.create')) > 0)
 		{
 			JToolBarHelper::addNew('link.add');
@@ -122,5 +128,6 @@ class BteViewLinks extends JViewLegacy
 		{
 			JToolBarHelper::preferences('com_bte');
 		}
+		*/
 	}
 }

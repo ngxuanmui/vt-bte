@@ -43,7 +43,7 @@ class BteViewDetail extends JViewLegacy
 			return false;
 		}
 
-// 		$this->addToolbar();
+		$this->addToolbar();
 		
 		// Include the component HTML helpers.
 // 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
@@ -64,7 +64,8 @@ class BteViewDetail extends JViewLegacy
 
 		$canDo = BteHelper::getActions();
 		$user = JFactory::getUser();
-		JToolBarHelper::title(JText::_('Body Text Extractor: Links manager'), 'links.png');
+		JToolBarHelper::title(JText::_('Body Text Extractor: View Content'), 'links.png');
+		/*
 		if (count($user->getAuthorisedCategories('com_bte', 'core.create')) > 0)
 		{
 			JToolBarHelper::addNew('link.add');
@@ -118,5 +119,6 @@ class BteViewDetail extends JViewLegacy
 		{
 			JToolBarHelper::preferences('com_bte');
 		}
+		*/
 	}
 }

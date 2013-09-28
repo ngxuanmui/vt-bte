@@ -23,8 +23,16 @@ JHtml::_('behavior.modal');
 	}
 </script>
 
+<style>
+<!--
+label {
+	font-weight: bold;
+}
+-->
+</style>
+
 <form action="<?php echo JRoute::_('index.php?option=com_bte&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="banner-form" class="form-validate">
-	<div class="width-60 fltlft">
+	<div class="width-100 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo 'URL'; ?></legend>
 			<ul class="adminformlist">
@@ -37,19 +45,24 @@ JHtml::_('behavior.modal');
 						<?php echo $this->item->website; ?>
 					</span>
 				</li>
-				<li><label>Content before extract</label>
-					<span style="float: left; line-height: 23px;">
-						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&field=html_content&tmpl=component&id=' . $this->item->id); ?>" class="modal">
-							View
+				<li>
+					<div style="float: left; width: 100%; font-weight: bold; line-height: 25px;">
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&field=html_content&id=' . $this->item->id); ?>">
+							View content before extract
 						</a>
-					</span>
+					</div>
 				</li>
 				<li><label>Content after extract</label>
+					<?php /*?>
 					<span style="float: left; line-height: 23px;">
-						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&tmpl=component&id=' . $this->item->id); ?>" class="modal">
+						<a href="<?php echo JRoute::_('index.php?option=com_bte&view=detail&id=' . $this->item->id); ?>">
 							View
 						</a>
 					</span>
+					*/ ?>
+					<div style="float: left; width: 100%; text-align: justify; line-height: 20px;">
+						<?php echo $this->item->content; ?>
+					</div>
 				</li>
 				<li><label>Time process</label>
 					<span style="float: left; line-height: 23px;">
@@ -64,7 +77,7 @@ JHtml::_('behavior.modal');
 
 		</fieldset>
 	</div>
-
+<?php /*
 <div class="width-40 fltrt">
 	<?php echo JHtml::_('sliders.start', 'banner-sliders-'.$this->item->id, array('useCookie'=>1)); ?>
 
@@ -92,6 +105,6 @@ JHtml::_('behavior.modal');
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </div>
-
+*/ ?>
 <div class="clr"></div>
 </form>

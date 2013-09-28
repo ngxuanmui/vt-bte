@@ -30,7 +30,7 @@ body {
 	padding: 0;
 	background: #fff;
 	padding-bottom: 1px;
-	font-size: 68.8%; /* Set base to 11px */
+	font-size: 12px; /* Set base to 11px */
 }
 
 body,td,th {

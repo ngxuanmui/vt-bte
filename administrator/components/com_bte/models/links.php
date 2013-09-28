@@ -87,7 +87,7 @@ class BteModelLinks extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id AS id, a.title AS title, a.website AS website, a.url AS url,'.
+				'a.id AS id, a.title AS title, a.website AS website, a.url AS url, a.start_time, a.end_time, '.
 				'a.checked_out AS checked_out,'.
 				'a.checked_out_time AS checked_out_time, a.catid AS catid,' .
 				'a.state AS state, a.ordering AS ordering,'.

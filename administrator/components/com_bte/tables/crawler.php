@@ -144,7 +144,7 @@ class BteTableCrawler extends JTable
 		}
 
 		// Get an instance of the table
-		$table = JTable::getInstance('Banner', 'BannersTable');
+		$table = JTable::getInstance('Crawler', 'BteTable');
 
 		// For all keys
 		foreach ($pks as $pk)
